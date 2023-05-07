@@ -11,8 +11,9 @@ data = readtable(nameFile);
 % Chia dữ liệu thành các tập training và test
 [dataTraining, dataTest] = splitData(data, 0.8);
 
+%% Khởi tạo model SVR
+model = trainRegressionModel(dataTraining);
 
 %% Kiểm tra trên tập test 
-yPred = predict(model, dataTest);
-pref = calcPerf(yPred, dataTest.Y);
-print(pref);
+yPred = model.predictFcn(dataTest);
+disp(calcPerf(yPred, dataTest.Y));

@@ -43,4 +43,4 @@ model = trainNetwork(dataTraining, layersGraph, options);
 
 %% Kiểm tra trên tập test 
 yPred = predict(model, dataTest);
-print(calcPerf(yPred, dataTest.Y));
+disp(calcPerf(yPred, dataTest.Y));
