@@ -5,4 +5,4 @@ Ngày    :   06/05/23.
 
 Nội dung:   Hoàn thành 3 mô hình Deep Learning, Machine Learning, Reinforcement Learning.
 
-Tiến độ : 2/3
+Tiến độ : 3/3
