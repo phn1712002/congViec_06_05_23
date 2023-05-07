@@ -9,7 +9,7 @@ nameFile = 'dataModelRegression.xlsx';
 data = readtable(nameFile);
 
 % Chia dữ liệu thành các tập training và test
-[dataTraining, dataTest] = splitData(data, 0.8);
+[dataTraining, dataTest] = splitData(data, 0.8, 1712);
 
 %% Khởi tạo model SVR
 model = trainRegressionModel(dataTraining);
