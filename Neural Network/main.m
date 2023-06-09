@@ -11,6 +11,14 @@ data = readtable(nameFile);
 % Chia dữ liệu thành các tập training và test
 [dataTraining, dataTest] = splitData(data, 0.8, 1712);
 
+% Chuẩn hóa dữ liệu
+minMaxScale = myMinMaxScale;
+
+minMaxScale = minMaxScale.fit(dataTraining);
+dataTraining = minMaxScale.transform(dataTraining);
+dataTest = minMaxScale.transform(dataTest);
+data = minMaxScale.transform(data);
+
 %% Khởi tạo mô hình
 % Cấu trúc mạng nơ rơn
 numFeatureInput = size(dataTraining, 2) - 1; 
@@ -44,3 +52,11 @@ model = trainNetwork(dataTraining, layersGraph, options);
 %% Kiểm tra trên tập test 
 yPred = predict(model, dataTest);
 disp(calcPerf(yPred, dataTest.Y));
+
+
+%% Xuất đồ thị
+figure;
+plot(data.Y);
+hold on;
+yPred = model.predict(data);
+plot(yPred);
